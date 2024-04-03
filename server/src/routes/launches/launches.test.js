@@ -1,7 +1,7 @@
 const app = require("../../app.js");
 const request = require("supertest");
 
-const connectMongoDb = require("../../services/mongo.js");
+const { connectMongoDb, mongoDisconnect } = require("../../services/mongo.js");
 const { loadPlanetsData } = require("../../models/planets.model.js");
 
 describe("Testing Launches API", () => {

@@ -10,5 +10,11 @@ mongoose.connection.on("error", (err) => console.error("error--->", err));
 async function connectMongoDb() {
   await mongoose.connect(MONGO_URL);
 }
+async function mongoDisconnect() {
+  await mongoose.disconnect();
+}
 
-module.exports = connectMongoDb;
+module.exports = {
+  connectMongoDb,
+  mongoDisconnect,
+};
