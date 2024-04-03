@@ -7,17 +7,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env: 
+    env:
       CI: true
+      MONGO_URL: mongodb://localhost/nasa
     strategy:
       matrix:
         node-versions: [18.x, 20.x]
+        mongodb-version: ['6.0']
     steps:
-      - uses: actions/checkout@v3
+      - name: Git checkout
+        uses: actions/checkout@v3
+
       - name: Use Node.js version ${{matrix.node-version}}
         uses: actions/setup-node@v3
-        with:  
-          node-version: ${{matrix.node-version}}
-      - run: npm install
-      - run: npm run build --prefix client
-      - run: npm test
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: MongoDB in GitHub Actions
+        uses: supercharge/mongodb-github-action@1.10.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+
+      - name: Install dependencies (NPM install)
+        run: npm install
+
+      - name: Build process
+        run: npm run build --prefix client
+
+      - name: Testing the build
+        run: npm test
