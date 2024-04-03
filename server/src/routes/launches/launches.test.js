@@ -10,6 +10,10 @@ describe("Testing Launches API", () => {
     await loadPlanetsData();
   });
 
+  afterAll(async () => {
+    await mongoDisconnect();
+  });
+
   describe("Testing GET /launches", () => {
     test("It should respond with 200 success", async () => {
       return await request(app)
