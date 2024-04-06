@@ -1,5 +1,5 @@
 const DEFAULT_PAGE_NUMBER = 1;
-const DEFAULT_PAGE_SIZE = 20; //mongo will return entire data if we set 0 as a limit.
+const DEFAULT_PAGE_SIZE = 0; //mongo will return entire data if we set 0 as a limit.
 
 function getPagination(queryData) {
   let pageNumber;

@@ -1,7 +1,7 @@
 const http = require("http");
 
 const app = require("./app");
-const connectMongoDb = require("./services/mongo.js");
+const { connectMongoDb } = require("./services/mongo.js");
 const { loadPlanetsData } = require("./models/planets.model.js");
 const { loadLaunchesData } = require("./models/launches.model.js");
 
