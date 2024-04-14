@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install-server": "cd server && npm instal",
-    "install-client": "cd client && npm install",
-    "install": "npm run install-server && npm run install-client",
     "watch-server": "npm run watch --prefix server",
     "watch-client": "npm start --prefix client",
     "watch": "concurrently 'npm:watch-server' 'npm:watch-client' ",

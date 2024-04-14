@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18, 20]
-        mongodb-version: ['6.0']
+        mongodb-version: ["6.0"]
     steps:
       - name: Git checkout
         uses: actions/checkout@v3
@@ -28,8 +28,11 @@ jobs:
         with:
           mongodb-version: ${{ matrix.mongodb-version }}
 
-      - name: Install dependencies (NPM install)
-        run: npm install
+      - name: Install client dependencies (NPM install)
+        run: npm install --prefix client --omit=dev
+
+      - name: Install server dependencies (NPM install)
+        run: npm install --prefix server --omit=dev
 
       - name: Build process
         run: npm run build --prefix client
